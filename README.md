@@ -17,10 +17,14 @@ Setup
 1. Install the required packages:
     pip install dlib opencv-python
 
-2. Set the following paths in the code:
+2. Download the model:
+   The CNN face detection model (`mmod_human_face_detector.dat`) can be downloaded from:
+   https://github.com/justadudewhohacks/face-recognition.js-models/blob/master/models/mmod_human_face_detector.dat
+
+3. Set the following paths in the code:
     - root_dir: Path to the root directory containing subdirectories of images.
     - dst_dir: Destination directory where the images with more than one face will be moved.
-    - model_route: Path to the trained model file for dlib's CNN face detector.
+    - model_route: Path to the downloaded model file for dlib's CNN face detector.
 
 Functionality
 -------------
