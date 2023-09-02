@@ -17,12 +17,15 @@ dnnFaceDetector = dlib.cnn_face_detection_model_v1(model_route)
 # Get list of all directories in the root directory
 dir_list = [dir for dir in os.listdir(root_dir) if os.path.isdir(os.path.join(root_dir, dir))]
 
+# Define a list of valid image extensions
+valid_extensions = ['.png', '.jpg', '.jpeg']
+
 # Process all directories
 for directory in dir_list:
     src_dir = os.path.join(root_dir, directory)
 
-    # Get list of all .png files in the source directory
-    file_list = [file for file in os.listdir(src_dir) if file.endswith(".png")]
+    # Get list of all valid image files in the source directory
+    file_list = [file for file in os.listdir(src_dir) if any(file.endswith(ext) for ext in valid_extensions)]
 
     # Process all images
     counter = 0
@@ -33,7 +36,8 @@ for directory in dir_list:
         for filename in batch_files:
             img_path = os.path.join(src_dir, filename)
             img = cv2.imread(img_path)
-            batch_images.append(img)
+            if img is not None:  # This check ensures that the read file is a valid image format that cv2 can handle.
+                batch_images.append(img)
 
         # Convert batch images to RGB for dlib
         batch_rgb_images = [cv2.cvtColor(img, cv2.COLOR_BGR2RGB) for img in batch_images]
