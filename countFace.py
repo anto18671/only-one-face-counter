@@ -4,7 +4,7 @@ import dlib
 import shutil
 
 # Set the batch size for GPU processing
-batch_size = 8
+batch_size = 1
 
 # Define the root directory and destination directory
 root_dir = r""
