@@ -1,7 +1,5 @@
 # face-counter
 
-=========================
-
 Overview
 --------
 This script processes images in batches to detect faces using a CNN face detection model from dlib. If an image contains more than one face, it is moved to a different directory. The script can process images with the extensions .png, .jpg, and .jpeg located within subdirectories of a specified root directory.
